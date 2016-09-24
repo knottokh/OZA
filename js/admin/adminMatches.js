@@ -241,10 +241,10 @@ var $adminMatches = {
 				 												
 				 												$adminMatches.$taskDialog.find('div[name=TeamA] label').text(jsonobj.TeamAName);
 				 												$adminMatches.$taskDialog.find('div[name=TeamA] input[type=hidden]').val(jsonobj.TeamA);
-				 												$adminMatches.$taskDialog.find('div[name=TeamA] img').attr("src",$globalKudo.rootpath+jsonobj.TeamAPicture);
+				 												$adminMatches.$taskDialog.find('div[name=TeamA] img').attr("src",jsonobj.TeamAPicture);
 											 					$adminMatches.$taskDialog.find('div[name=TeamB] label').text(jsonobj.TeamBName);
 											 					$adminMatches.$taskDialog.find('div[name=TeamB] input[type=hidden]').val(jsonobj.TeamB);
-				 												$adminMatches.$taskDialog.find('div[name=TeamB] img').attr("src",$globalKudo.rootpath+jsonobj.TeamBPicture);
+				 												$adminMatches.$taskDialog.find('div[name=TeamB] img').attr("src",jsonobj.TeamBPicture);
 											 					$adminMatches.$taskDialog.find('input[name=ScoreTeamsA]').val(jsonobj.ScoreA);
 											 					$adminMatches.$taskDialog.find('input[name=ScoreTeamsB]').val(jsonobj.ScoreB);		
 											 					$adminMatches.$taskDialog.find('#StartDateInput').data('DateTimePicker').date($pageEntity.MysqlDatetoDate(jsonobj.StartMatch));	

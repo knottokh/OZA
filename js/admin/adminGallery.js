@@ -38,7 +38,7 @@ var $adminGallery = {
                 		data.RecordNo,
                     data.Title,
                     (data.Details!=null)?data.Details:"",
-                    (data.Picture!=null)?$globalKudo.rootpath+data.Picture:$adminGallery.defaultimg,
+                    (data.Picture!=null)?data.Picture:$adminGallery.defaultimg,
                     data.ActivityDate
                     );
             },
@@ -218,7 +218,7 @@ var $adminGallery = {
 					    		form_data.append('file', file_data);
 	
 
-	 						$fnglobal.uploadFile(form_data,"teams/",function(path){
+	 						$fnglobal.uploadFile(form_data,"gallery/",function(path){
 
 	 								savedata.objdata.Picture = path;	
 									
