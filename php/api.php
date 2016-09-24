@@ -9,9 +9,9 @@
 $method = $_SERVER['REQUEST_METHOD'];
 
 $dbserver ='localhost';
-$dbuser ='root';
+$dbuser ='knottoc9';
 $dbpass = '';
-$dbdatabase = 'ozadatabase';
+$dbdatabase = 'c9';
 //$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 //$input = json_decode(file_get_contents('php://input'),true);
  
