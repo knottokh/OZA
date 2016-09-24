@@ -17,9 +17,10 @@
     			$filename  = $_FILES['file']['name'];
           //iconv('UTF-8','ASCII',$filename);
     		  $filelen = strlen($filename);
-    			$indexdot = strripos($filename,".");
+    			$indexdot = strripos($filename,'.');
     		  $fnonly = substr($filename,0,$indexdot);
-          $fnonly = GUID();//mb_convert_encoding($fnonly, "SJIS", "windows-874,UTF-8");//utf8_decode($fnonly);
+    		   iconv('UTF-8','windows-874',$fnonly);
+          //$fnonly = GUID();//mb_convert_encoding($fnonly, "SJIS", "windows-874,UTF-8");//utf8_decode($fnonly);
     			$ftype = substr($filename,$indexdot,$filelen - $indexdot);
     			$currenttime = date_format(new DateTime('NOW',new DateTimeZone('Asia/Bangkok')),"dmYHis");
           $folfilepath = $pathdirectory.$fnonly."_".$currenttime.$ftype;
@@ -27,7 +28,7 @@
 
         move_uploaded_file($_FILES['file']['tmp_name'],$newFilepath);
        
-        	$uResult['filepath'] = $folfilepath;	
+        	$uResult['filepath'] = $rootdirectory;	
           $uResult['success'] = true;
   				
     }

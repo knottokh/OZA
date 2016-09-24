@@ -331,7 +331,7 @@ var $adminMatches = {
    			      	var dateend = 	$adminMatches.$taskDialog.find('#EndDateInput').data('DateTimePicker').date();
    			      	
    			      	if(dateend!=null){
-   			      		attno.EndMatch = $pageEntity.dateFormate(new Date(dateend.toString()))
+   			      		attno.EndMatch = $pageEntity.dateFormate(new Date(dateend.toString()));
    			      	}
    			      }
  

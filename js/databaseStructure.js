@@ -184,6 +184,9 @@ var $pageEntity = {
 					});	
 	 },
 	 InsertData:function(phppage,data,callback){
+	 		data.objdata.Created = $pageEntity.dateFormate(new Date());
+	 		data.objdata.Updated = $pageEntity.dateFormate(new Date());
+	 		
 	 			data.method = "POST";
 	 				jQuery.ajax({
 					    type: "POST",
@@ -206,6 +209,7 @@ var $pageEntity = {
 					});	
 	 },
 	 EditData:function(phppage,data,callback){
+	 	data.objdata.Updated = $pageEntity.dateFormate(new Date());
 	 			data.method = "PUT";
 	 				jQuery.ajax({
 					    type: "POST",
@@ -229,6 +233,7 @@ var $pageEntity = {
 	 },
 	  DeleteData:function(phppage,data,callback){
 	  		data.objdata.Active = "N";
+	  		data.objdata.Updated = $pageEntity.dateFormate(new Date());
 	 			data.method = "PUT";
 	 				jQuery.ajax({
 					    type: "POST",
@@ -252,6 +257,7 @@ var $pageEntity = {
 	 },
 	  RestoreData:function(phppage,data,callback){
 	  		data.objdata.Active = "Y";
+	  		data.objdata.Updated = $pageEntity.dateFormate(new Date());
 	 			data.method = "PUT";
 	 				jQuery.ajax({
 					    type: "POST",
