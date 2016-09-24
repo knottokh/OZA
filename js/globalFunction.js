@@ -34,7 +34,7 @@ var $fnglobal = {
   uploadFile:function(formdata,rootfolder,callback){
 
   		 $.ajax({
-                url: $globalKudo.rootpath+"php/upload.php?rootpath="+$globalKudo.rootpath+"&folderpath=uploads/"+rootfolder, // point to server-side PHP script 
+                url: $globalKudo.rootpath+"php/upload.php?rootpath="+$globalKudo.rootpath+"&folderpath="+rootfolder, // point to server-side PHP script 
                 dataType: 'text',  // what to expect back from the PHP script, if anything
                 cache: false,
                 contentType: false,
