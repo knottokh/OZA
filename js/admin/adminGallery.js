@@ -141,7 +141,7 @@ var $adminGallery = {
 				 												 $adminGallery.$taskDialog.find('#ActivityDateInput').data('DateTimePicker').date($pageEntity.MysqlDatetoDate(jsonobj.ActivityDate));		
            			 								var span = document.createElement('span');
            			 								if(jsonobj.Picture){
-												          span.innerHTML = ['<img class="kudo-thumb" src="', $globalKudo.rootpath+jsonobj.Picture,
+												          span.innerHTML = ['<img class="kudo-thumb" src="',jsonobj.Picture,
 												                            '"', '"/>'].join('');
 												          $adminGallery.$taskDialog.find('#list').append(span);
 																if(tracking == "V"){

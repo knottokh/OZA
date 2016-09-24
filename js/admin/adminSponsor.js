@@ -203,7 +203,7 @@ var $adminSponsor = {
 					    		form_data.append('file', file_data);
 	
 
-	 						$fnglobal.uploadFile(form_data,"Sponsors/",function(path){
+	 						$fnglobal.uploadFile(form_data,"sponsors/",function(path){
 
 	 								savedata.objdata.Picture = path;	
 									
