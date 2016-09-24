@@ -1,0 +1,8 @@
+$dbserver ="mysql5.000webhost.com";
+$dbuser ="a3378345_root";
+$dbpass = "a12344321";
+$dbdatabase =  "a3378345_wbtest";
+
+
+php_flag register_globals on
+php_value session.save_path '/home/a3378345/sessions'

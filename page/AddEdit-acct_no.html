@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <link href="../lib/jquery-ui-1.11.3/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+            <link href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link href="../css/royalstyle.css" rel="stylesheet" type="text/css" />
+
+
+            <script src="../lib/jquery-1.11.3.js"></script>
+            <script src="../lib/jquery-ui-1.11.3/jquery-ui.min.js"></script>
+            <script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+            <script src="../js/common.js"></script>
+            <script src="../js/grid.js"></script>
+            <script src="../js/databaseStructure.js"></script>
+            <script src="../js/table_acct-no.js"></script>
+    </head>
+    <body>
+        <div id="roy-header">
+        <script>
+            $("#roy-header").load("../page/_layout/header.html");
+        </script>
+    </div>
+    <div class="roy-contents">
+        <div class="container">
+                <h1>acct_no</h1>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="ACCTNAME">
+                    acct-name<span class="required">*</span>:
+                </label>
+                <div class="col-sm-9">
+                    <input type="text" name="ACCTNAME" class="form-control" />
+                    <label for="ACCTNAME" class="error"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="ACCTLEVEL">
+                    acct-label<span class="required">*</span>:
+                </label>
+                <div class="col-sm-9">
+                    <input type="text" name="ACCTLEVEL" class="form-control" />
+                    <label for="ACCTLEVEL" class="error"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary form-save" type="submit" >Save</button>
+                <button type="button" class="btn btn-secondary btn-cancel" data-dismiss="modal">Cancel</button>
+            </div>
+    </div>
+    <div id="roy-footer">
+        <script>
+            $("#roy-footer").load("../page/_layout/footer.html");
+        </script>
+    </div>
+
+        <script type="text/javascript">
+                $(function(){
+                    $pageEntity.init();
+                    $pageAcctNo.init();
+
+                });
+        </script>
+
+    </body>
+</html>

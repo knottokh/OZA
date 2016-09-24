@@ -1,0 +1,44 @@
+
+body{ 
+font-size:16px;
+font-family:Tahoma;
+
+}
+A:link {text-decoration: none; color: #009900;}
+A:visited {text-decoration: none; color: #009900;}
+A:active {text-decoration: none; color: #009900;}
+A:hover {text-decoration: underline; color: #009900;}
+
+.table_border{
+	border-top:1px; border-top-style:dashed;
+	border-right:1px; border-right-style:dashed;
+	border-bottom:1px; border-bottom-style:dashed;
+	border-left:1px; border-left-style:dashed;
+	font-size:12px;
+}
+
+.border_head { 
+border-bottom:2px; border-bottom-style: solid ; border-bottom-color:#009900;
+background-color: #CCCCCC;
+ }
+
+.text_style {
+        font-family: Tahoma; 
+        font-size: 14px;
+        /*font-weight : bold;*/
+        line-height: 20px;
+		color: #666666;
+        margin: 0 0 0px 0;
+}
+
+.h_text {
+        font-family: Tahoma; 
+        font-size: 22px;
+        /*font-weight : bold;*/
+        line-height: 35px;
+		color:#FFFFFF;
+        margin: 0 0 20px 0;
+        text-shadow: 1px 1px 1px #222;
+		background-color: #009900;
+		text-align:center;
+}
