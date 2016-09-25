@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -207,7 +206,6 @@
 </div>
 
         <script type="text/javascript">
-
                 $(function(){
                         $adminMatches.init();
                         $adminMatches.loadData();

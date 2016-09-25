@@ -1,6 +1,6 @@
 
 var $fnglobal = {
-	  handleFileSelect: function (evt,$imgdiv,ismul) {
+	  handleFileSelect: function (evt,$imgdiv,ismul,callback) {
      var files = evt.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -24,6 +24,11 @@ var $fnglobal = {
           span.innerHTML = ['<img class="kudo-thumb" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join('');
           $imgdiv.append(span);
+            if(callback){
+						                        if(typeof callback == "function"){
+						                             callback();
+						                        }
+						                    }
         };
       })(f);
 
@@ -64,6 +69,10 @@ var $fnglobal = {
 		               alert(textStatus.responseText);
 		            }
      });
+  },
+  getDegitNumber:function(str,max){
+        str = str.toString();
+        return str.length < max ? $fnglobal.getDegitNumber("0" + str, max) : str;
   },
 	 getParameterByName:function(name, url) {
 		    if (!url) url = window.location.href;

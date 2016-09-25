@@ -3,6 +3,8 @@
 		 
 		 header('Content-Type: application/json');
 		 
+		 use Aws\S3\S3Client;
+		 
 	//	 $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
 		 $rootdirectory = $_GET["rootpath"]; 
 		 $pathdirectory = $_GET["folderpath"]; 
@@ -12,43 +14,27 @@
             $uResult = array();
   	        $uResult['success'] = false;
   	        $errormsg = '';
-		use Aws\S3\S3Client;
+  	        
 
-       $keyname = 'AKIAIYRZRMIZROLSMLZQ';
-       $bucketname = 'ozauploads';
+
+       $bucketname = 'ozaupload';
        try{
+           //$credentials = new Credentials('AKIAIB7LZ2JAYA4O7F7Q', 'v2xvVXJbOJeaVuvZBc/66H/dEU7AXnPeAu7ZIE2E');
            $s3 = S3Client::factory(array(
                // 'credentials' => $credentials,
                 'region'  => 'ap-southeast-1',
                 'version' => 'latest',
                  'credentials' => [
-                        'key'    => $keyname,
-                        'secret' => 'xbPw/V0mkv6GNc7PMRqPxBp5Lj2HEvNlRXVwV+Js'
+                        'key'    => 'AKIAIB7LZ2JAYA4O7F7Q',
+                        'secret' => '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'
                     ]
             ));
-            $result = $s3->listBuckets(array());
-            foreach ($result['Buckets'] as $bk) {
-                if($bk['Name'] == 'ozauploads'){
-                    $bucket= $bk;
-                }
-               // echo $bucket['Name'], PHP_EOL;
-            }
-            //$client = $s3->get('S3');
-            //$result = $s3->listBuckets();
-           // $bucket = $result.buckets['ozauploads'] 
-           // $bucket = $client->getObject(array(
-           //     'Bucket' => $bucketname,
-           //     'Key'    => $keyname
-           // ));
-          //  $bucket = getenv('S3_BUCKET');
-           // $errormsg.= "\n".$result;
+
        }
        catch(Exception $e) { 
              $errormsg.= "\n".$e->getMessage();
       }
-            		    
-            	
-      //
+
 
     if(isset($pathdirectory)){
               	      	 if(isset($_FILES['file'])){
@@ -58,20 +44,41 @@
             else {
             		if( is_uploaded_file($_FILES['file']['tmp_name'])){
             		     try {
+            		         
+            		  $filekeyparh  = $pathdirectory.$_FILES['file']['name'];       
         // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
-                      //  $upload = $s3->upload($bucket, $_FILES['file']['name'], fopen($_FILES['file']['tmp_name'], 'rb'), 'public-read');
-                        $upload = $s3->putObject(array(
+                      //  $upload = $s3->upload($bucket,$pathdirectory.$_FILES['file']['name'], fopen($_FILES['file']['tmp_name'], 'rb'), 'public-read');
+                       $upload = $s3->putObject(array(
                                 'Bucket'       => $bucketname,
-                                'Key'          => $pathdirectory.$_FILES['file']['name'],
+                                'Key'          => $filekeyparh,
                                 'SourceFile'   => $_FILES['file']['tmp_name'],
                                 'ACL'          => 'public-read',
                         ));
+                      /* $uploader = UploadBuilder::newInstance()
+                                ->setClient($s3)
+                                ->setSource($_FILES['file']['tmp_name'])
+                                ->setBucket($bucketname)
+                                ->setKey($filekeyparh)
+                                ->setConcurrency(3)
+                                ->build();
+                          
+                            // Perform the upload. Abort the upload if something goes wrong
+                            try {
+                                $uploader->upload();
+                                //echo "Upload complete.\n";
+                                 $uResult['filepath'] =htmlspecialchars($uploader->get('ObjectURL'));
+                                 $uResult['success'] = true;
+                            } catch (MultipartUploadException $e) {
+                                $uploader->abort();
+                                $errormsg.= "\n".$e->getMessage();
+                                //echo "Upload failed.\n";
+                            }*/
                         
                         
-                        
-                        	$uResult['filepath'] =htmlspecialchars($upload->get('ObjectURL'));
-                            $uResult['success'] = true;
-            		     
+                                $uResult['filepath'] =htmlspecialchars($upload->get('ObjectURL'));
+                                $uResult['success'] = true;
+
+            		    
             		    } catch(Exception $e) { 
             		        $errormsg.= "\n".$e->getMessage();
             		    }

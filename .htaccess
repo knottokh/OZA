@@ -26,6 +26,7 @@ RewriteRule ^page/(.*)_(.*)_(.*)_(.*).html$ page/webboard/board_home.php?board_i
 RewriteRule ^page/(.*)_(.*).html$ page/webboard/board_home.php?board_id=$2&board_name=$1 [L]
 RewriteRule ^(.*)-(.*).html$ Sititi.php?id=$2&str=$1 [L]
 
+RewriteRule ^page/news_(.*)$ page/NewsDetails.php?newsid=$1 [L]
 RewriteRule ^(h|H)(o|O)(m|M)(e|E)$ index.php [L]
 RewriteRule ^(n|N)(e|E)(w|W)(s|S)$ page/News.php [L]
 RewriteRule ^(g|G)(a|A)(l|L)(l|L)(e|E)(r|R)(y|Y)$ page/Gallery.php [L]

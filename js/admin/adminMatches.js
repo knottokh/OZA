@@ -44,9 +44,9 @@ var $adminMatches = {
                 		data.Id,
                 		data.RecordNo,
                     data.TeamAName,
-                    $globalKudo.rootpath+data.TeamAPicture,
+                    data.TeamAPicture,
                     data.TeamBName,
-                    $globalKudo.rootpath+data.TeamBPicture,
+                    data.TeamBPicture,
                     data.ScoreA,
                     data.ScoreB,
                     data.StartMatch
