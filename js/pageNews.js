@@ -14,7 +14,7 @@ var $pageNews = {
 	 loadData:function(){
 	 		        var data = {	table: $pageNews.tablename, 
 								    	objdata : $pageNews.objdata(),
-								    	where :"where Active = 'Y'"
+								    	where :"where Active = 'Y' order by Created desc"
 					    			};
 				  data.method = "get";	    			
 
@@ -57,7 +57,7 @@ var $pageNews = {
 				 												 $('textarea[name=newsBody]').html(jsonobj.Body);	
            			 								var span = document.createElement('span');
            			 								if(jsonobj.Image){
-												          span.innerHTML = ['<img class="kudo-thumb" src="',jsonobj.Image,
+												          span.innerHTML = ['<img class="kudo-thumb" src="',   $globalKudo.rootpath+jsonobj.Image,
 												                            '"', '"/>'].join('');
 												          $('#list').append(span);
 												        }
@@ -66,5 +66,38 @@ var $pageNews = {
 
 				 											  $spinner.hide();		
 				 					});	
+	 },
+	 sliderNews:function(){
+	 	       var dataatt =  $pageNews.objdata();
+	 	       dataatt.pageIndex = 0;
+	 	       dataatt.pageSize  = 4;
+	 			var objgetdata = {	table: $pageNews.tablename, 
+								    	objdata : dataatt,
+								    	where :"where Active = 'Y' order by Created desc"
+					  };
+	 		$pageEntity.GetData($globalKudo.apipath,objgetdata,function(data){
+				 		var jsonobj = JSON.parse(data.data);
+				 		var $newslidediv = $("<div class=\"flexslider\"></div>");
+				 		var $newslideul = $("<ul class=\"slides\"></ul>");
+				 		for(var i = 0;i< jsonobj.length;i++){
+				 			var newslideli = '<li>'+
+											      '<img src="'+jsonobj[i].Image+'" />'+
+											      '<div class="div-flex-caption"><p class="flex-caption">'+jsonobj[i].Title+'</p></div>'+
+											  '</li>';
+				 			$newslideul.append(newslideli);
+				 		}
+						$newslidediv.append($newslideul);
+						$(".home-newsSlider").append($newslidediv);
+						$('.home-newsSlider .flexslider').flexslider({
+					    	animation: "slide",
+					    	controlNav:false,
+					    	start: function(){
+						       $( window ).resize();
+						        //do something
+						    }
+					  });
+					  
+				 									
+			});
 	 }
 };

@@ -1,6 +1,7 @@
 			<link href="<?=$scriptroot?>lib/jquery-ui-1.11.3/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 			<link href="<?=$scriptroot?>lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 			<link href="<?=$scriptroot?>lib/Bootstrap.v3.Datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+			<link href="<?=$scriptroot?>lib/woothemes-FlexSlider-0690ec2/flexslider.css" rel="stylesheet" type="text/css" />
 			<link href="<?=$scriptroot?>css/common.css" rel="stylesheet" type="text/css" />
 			<link href="<?=$scriptroot?>css/webboard.css" rel="stylesheet" type="text/css" />
 			<link href="<?=$scriptroot?>css/sitestyle.css" rel="stylesheet" type="text/css" />
@@ -14,6 +15,7 @@
 			<script src="<?=$scriptroot?>lib/Bootstrap.v3.Datetimepicker/js/moment.min.js"></script>
 			<script src="<?=$scriptroot?>lib/Bootstrap.v3.Datetimepicker/js/moment-with-locales.min.js"></script>
 			<script src="<?=$scriptroot?>lib/Bootstrap.v3.Datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+			<script src="<?=$scriptroot?>lib/woothemes-FlexSlider-0690ec2/jquery.flexslider-min.js"></script>
 			<script src="<?=$scriptroot?>lib/date25.js"></script>
 			<script src="<?=$scriptroot?>js/common.js"></script>
 			<script src="<?=$scriptroot?>js/grid.js"></script>

@@ -21,7 +21,7 @@ var $adminMatches = {
 								    	objdata : $adminMatches.objdata(),
 								    	where :"LEFT JOIN teams as t1 on matches.TeamA = t1.Id "+
 								    				 "LEFT JOIN teams as t2 on matches.TeamB = t2.Id "+
-								    					"where matches.Active = 'Y'",
+								    					"where matches.Active = 'Y' order by matches.StartMatch desc",
 								    	colselect :"matches.Id,matches.ScoreA,matches.ScoreB,matches.StartMatch"	+
 								    							",t1.Name as TeamAName,t1.Picture as TeamAPicture"	+	
 								    							",t2.Name as TeamBName,t2.Picture as TeamBPicture"
@@ -44,9 +44,9 @@ var $adminMatches = {
                 		data.Id,
                 		data.RecordNo,
                     data.TeamAName,
-                    data.TeamAPicture,
+                    $globalKudo.rootpath+data.TeamAPicture,
                     data.TeamBName,
-                    data.TeamBPicture,
+                    $globalKudo.rootpath+data.TeamBPicture,
                     data.ScoreA,
                     data.ScoreB,
                     data.StartMatch
@@ -241,10 +241,10 @@ var $adminMatches = {
 				 												
 				 												$adminMatches.$taskDialog.find('div[name=TeamA] label').text(jsonobj.TeamAName);
 				 												$adminMatches.$taskDialog.find('div[name=TeamA] input[type=hidden]').val(jsonobj.TeamA);
-				 												$adminMatches.$taskDialog.find('div[name=TeamA] img').attr("src",jsonobj.TeamAPicture);
+				 												$adminMatches.$taskDialog.find('div[name=TeamA] img').attr("src",$globalKudo.rootpath+jsonobj.TeamAPicture);
 											 					$adminMatches.$taskDialog.find('div[name=TeamB] label').text(jsonobj.TeamBName);
 											 					$adminMatches.$taskDialog.find('div[name=TeamB] input[type=hidden]').val(jsonobj.TeamB);
-				 												$adminMatches.$taskDialog.find('div[name=TeamB] img').attr("src",jsonobj.TeamBPicture);
+				 												$adminMatches.$taskDialog.find('div[name=TeamB] img').attr("src",$globalKudo.rootpath+jsonobj.TeamBPicture);
 											 					$adminMatches.$taskDialog.find('input[name=ScoreTeamsA]').val(jsonobj.ScoreA);
 											 					$adminMatches.$taskDialog.find('input[name=ScoreTeamsB]').val(jsonobj.ScoreB);		
 											 					$adminMatches.$taskDialog.find('#StartDateInput').data('DateTimePicker').date($pageEntity.MysqlDatetoDate(jsonobj.StartMatch));	

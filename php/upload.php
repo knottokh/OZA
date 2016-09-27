@@ -3,13 +3,13 @@
 		 
 		 header('Content-Type: application/json');
 		 
-		 use Aws\S3\S3Client;
+	//	 use Aws\S3\S3Client;
 		 
 	//	 $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
 		 $rootdirectory = $_GET["rootpath"]; 
 		 $pathdirectory = $_GET["folderpath"]; 
 		 
-         require $rootdirectory.'vendor/autoload.php';
+    //     require $rootdirectory.'vendor/autoload.php';
 		 //change Directory Here
             $uResult = array();
   	        $uResult['success'] = false;
@@ -17,8 +17,8 @@
   	        
 
 
-       $bucketname = 'ozaupload';
-       try{
+    //   $bucketname = 'ozaupload';
+   /*    try{
            //$credentials = new Credentials('AKIAIB7LZ2JAYA4O7F7Q', 'v2xvVXJbOJeaVuvZBc/66H/dEU7AXnPeAu7ZIE2E');
            $s3 = S3Client::factory(array(
                // 'credentials' => $credentials,
@@ -33,7 +33,7 @@
        }
        catch(Exception $e) { 
              $errormsg.= "\n".$e->getMessage();
-      }
+      }*/
 
 
     if(isset($pathdirectory)){
@@ -43,7 +43,7 @@
             }
             else {
             		if( is_uploaded_file($_FILES['file']['tmp_name'])){
-            		     try {
+            	/*	     try {
             		         
             		  $filekeyparh  = $pathdirectory.$_FILES['file']['name'];       
         // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
@@ -54,26 +54,7 @@
                                 'SourceFile'   => $_FILES['file']['tmp_name'],
                                 'ACL'          => 'public-read',
                         ));
-                      /* $uploader = UploadBuilder::newInstance()
-                                ->setClient($s3)
-                                ->setSource($_FILES['file']['tmp_name'])
-                                ->setBucket($bucketname)
-                                ->setKey($filekeyparh)
-                                ->setConcurrency(3)
-                                ->build();
-                          
-                            // Perform the upload. Abort the upload if something goes wrong
-                            try {
-                                $uploader->upload();
-                                //echo "Upload complete.\n";
-                                 $uResult['filepath'] =htmlspecialchars($uploader->get('ObjectURL'));
-                                 $uResult['success'] = true;
-                            } catch (MultipartUploadException $e) {
-                                $uploader->abort();
-                                $errormsg.= "\n".$e->getMessage();
-                                //echo "Upload failed.\n";
-                            }*/
-                        
+
                         
                                 $uResult['filepath'] =htmlspecialchars($upload->get('ObjectURL'));
                                 $uResult['success'] = true;
@@ -86,8 +67,8 @@
             		}
             		else{
             		    $errormsg.= "\n"."file stream not found";
-            		}
-            	/*
+            		}*/
+            	
             	//iconv('UTF-8','windows-874',$_FILES['file']['name']);
             			$filename  = $_FILES['file']['name'];
                   //iconv('UTF-8','ASCII',$filename);
@@ -98,23 +79,24 @@
                   //$fnonly = GUID();//mb_convert_encoding($fnonly, "SJIS", "windows-874,UTF-8");//utf8_decode($fnonly);
             			$ftype = substr($filename,$indexdot,$filelen - $indexdot);
             			$currenttime = date_format(new DateTime('NOW',new DateTimeZone('Asia/Bangkok')),"dmYHis");
-                  $folfilepath = $pathdirectory.$fnonly."_".$currenttime.$ftype;
+                       // $folfilepath = 'uploads/'.$pathdirectory.$fnonly."_".$currenttime.$ftype;
+                       $folfilepath = 'uploads/'.$pathdirectory.$filename;
             			$newFilepath = $rootdirectory.$folfilepath;
         
                 move_uploaded_file($_FILES['file']['tmp_name'],$newFilepath);
                
                
                
-                	$uResult['filepath'] = "nono";	
-                  $uResult['success'] = true;*/
+                	$uResult['filepath'] = $folfilepath;	
+                    $uResult['success'] = true;
           				
-            }
-  	 }
-  	 else{
-  	      $errormsg.="\n".'file upload not found';
-  	 }
-
-  	 }
+                    }
+  	        }
+         }
+      	 else{
+      	      $errormsg.="\n".'file upload not found';
+      	 }
+    }
   	 else{
   	     $errormsg.="\n".'No "S3_BUCKET" config var in found in env!';
   	 }

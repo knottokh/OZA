@@ -17,7 +17,7 @@ var $adminNews = {
 	 loadData:function(){
 	 		        var data = {	table: $adminNews.tablename, 
 								    	objdata : $adminNews.objdata(),
-								    	where :"where Active = 'Y'"
+								    	where :"where Active = 'Y' order by Created desc"
 					    			};
 				  data.method = "get";	    			
 
@@ -134,7 +134,7 @@ var $adminNews = {
 				 												 $adminNews.$taskDialog.find('textarea[name=newsBody]').html(jsonobj[0].Body);	
            			 								var span = document.createElement('span');
            			 								if(jsonobj[0].Image){
-												          span.innerHTML = ['<img class="kudo-thumb" src="',jsonobj[0].Image,
+												          span.innerHTML = ['<img class="kudo-thumb" src="',$globalKudo.rootpath+jsonobj[0].Image,
 												                            '"', '"/>'].join('');
 												          $adminNews.$taskDialog.find('#list').append(span);
 												        }

@@ -1,8 +1,8 @@
-<footer class="kudo-footer navbar-default"> 
+<!--<footer class="kudo-footer navbar-default"> 
   <div class="container"> 
         			footer
   </div> 
-</footer>
+</footer>-->
 
 <script type="text/javascript">
 				$globalKudo= {

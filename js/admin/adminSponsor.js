@@ -38,7 +38,7 @@ var $adminSponsor = {
                 		data.RecordNo,
                     data.Name,
                     (data.Details!=null)?data.Details:"",
-                    (data.Picture!=null)?data.Picture:$adminSponsor.defaultimg 
+                    (data.Picture!=null)?$globalKudo.rootpath+data.Picture:$adminSponsor.defaultimg 
                     );
             },
             fnRowElementsAction: [{
@@ -127,7 +127,7 @@ var $adminSponsor = {
 				 												 $adminSponsor.$taskDialog.find('input[name=SponsorOrder]').val(jsonobj[0].OrderNo);	
            			 								var span = document.createElement('span');
            			 								if(jsonobj[0].Picture){
-												          span.innerHTML = ['<img class="kudo-thumb" src="',jsonobj[0].Picture,
+												          span.innerHTML = ['<img class="kudo-thumb" src="',$globalKudo.rootpath+jsonobj[0].Picture,
 												                            '"', '"/>'].join('');
 												          $adminSponsor.$taskDialog.find('#list').append(span);
 												        }

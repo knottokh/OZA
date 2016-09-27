@@ -38,7 +38,7 @@ var $adminTeams = {
                 		data.RecordNo,
                     data.Name,
                     (data.Details!=null)?data.Details:"",
-                    (data.Picture!=null)?data.Picture:$adminTeams.defaultimg
+                    (data.Picture!=null)?$globalKudo.rootpath+data.Picture:$adminTeams.defaultimg
                     );
             },
             fnRowElementsAction: [{
@@ -119,7 +119,7 @@ var $adminTeams = {
 				 												 $adminTeams.$taskDialog.find('textarea[name=TeamsDetails]').html(jsonobj[0].Details);	
            			 								var span = document.createElement('span');
            			 								if(jsonobj[0].Picture){
-												          span.innerHTML = ['<img class="kudo-thumb" src="',jsonobj[0].Picture,
+												          span.innerHTML = ['<img class="kudo-thumb" src="',$globalKudo.rootpath+jsonobj[0].Picture,
 												                            '"', '"/>'].join('');
 												          $adminTeams.$taskDialog.find('#list').append(span);
 												        }

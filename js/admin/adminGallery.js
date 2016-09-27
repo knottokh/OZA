@@ -17,7 +17,7 @@ var $adminGallery = {
 	 loadData:function(){
 	 		        var data = {	table: $adminGallery.tablename, 
 								    	objdata : $adminGallery.objdata(),
-								    	where :"where Active = 'Y'"
+								    	where :"where Active = 'Y' order by Created desc"
 					    			};
 				  data.method = "get";	    			
 
@@ -38,7 +38,7 @@ var $adminGallery = {
                 		data.RecordNo,
                     data.Title,
                     (data.Details!=null)?data.Details:"",
-                    (data.Picture!=null)?data.Picture:$adminGallery.defaultimg,
+                    (data.Picture!=null)?$globalKudo.rootpath+data.Picture:$adminGallery.defaultimg,
                     data.ActivityDate
                     );
             },
@@ -141,7 +141,7 @@ var $adminGallery = {
 				 												 $adminGallery.$taskDialog.find('#ActivityDateInput').data('DateTimePicker').date($pageEntity.MysqlDatetoDate(jsonobj.ActivityDate));		
            			 								var span = document.createElement('span');
            			 								if(jsonobj.Picture){
-												          span.innerHTML = ['<img class="kudo-thumb" src="',jsonobj.Picture,
+												          span.innerHTML = ['<img class="kudo-thumb" src="',$globalKudo.rootpath+jsonobj.Picture,
 												                            '"', '"/>'].join('');
 												          $adminGallery.$taskDialog.find('#list').append(span);
 																if(tracking == "V"){
