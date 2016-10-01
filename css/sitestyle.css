@@ -84,7 +84,7 @@ body{
 	border-bottom: 2px #fff solid;	
 }
 div[class*=oza-] .container{
-	min-width: 900px;
+/*	min-width: 900px;*/
 }
 .oza-header,.oza-header .container,
 .oza-header .navbar {
