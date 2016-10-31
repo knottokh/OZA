@@ -3,6 +3,11 @@
 <html>
     <head>
     <meta charset="UTF-8">    
+    <meta property="fb:app_id" content="1692775234375070"/>
+    <meta property="og:url" content="Replace with URL of the page where comments are installed don't forget trailing slash at the end" />
+    <meta property="og:title" content="Replace with Page Title" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:description" content="Add Some description" />
     <?php $rootpath="../_layout/"; ?>
     <?php $scriptroot="../"; ?>   
 
@@ -121,6 +126,25 @@
             </div>
      </form>
 </div>
+<div class="fb-comments" data-href="https://ozaproject-knottoc9.c9users.io/Admin/Sponsor" data-width="100%" data-numposts="15"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1692775234375070',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
         <script type="text/javascript">
 
                 $(function(){

@@ -2,7 +2,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8">    
+    <meta charset="UTF-8">   
+    <meta property="fb:app_id" content="1692775234375070" />
+        <meta property="og:url" content="Replace with URL of the page where comments are installed don't forget trailing slash at the end" />
+    <meta property="og:title" content="Replace with Page Title" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:description" content="Add Some description" />
+    <title>Team Admin</title>
     <?php $rootpath="../_layout/"; ?>
     <?php $scriptroot="../"; ?>   
 
@@ -11,6 +17,7 @@
      <script src="<?=$scriptroot?>js/admin/adminTeams.js"></script>
     </head>
 <body>
+
 <?php include $rootpath."header.php";?>
 
     
@@ -112,15 +119,71 @@
             </div>
      </form>
 </div>
-        <script type="text/javascript">
+<input type="button" name="" onclick="javascript:clikePost();" value="test"/>
+<span class="fb-comments-count" data-href="https://ozaproject-knottoc9.c9users.io/Admin/Teams"></span>
+<div class="fb-comments" data-href="https://ozaproject-knottoc9.c9users.io/Admin/Squad" data-width="100%" data-numposts="15"></div>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1692775234375070',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
+        <script type="text/javascript">
+                function clikePost(){
+                      FB.login(function(response) {
+                        if (response.authResponse) {
+                         console.log('Welcome!  Fetching your information.... ');
+                         var accesstoken =response.authResponse.accessToken;
+                         FB.api('/me', function(response) {
+                           console.log('Good to see you, ' + response.name + '.');
+                               FB.api(
+                                "/199984547094562/feed",
+                                "POST",
+                                {
+                                    "access_token": accesstoken,
+                                    "message": "This is a test message"
+                                },
+                                function (responsepost) {
+                                  if (responsepost && !responsepost.error) {
+                                    /* handle the result */
+                                    alert(responsepost.post_id);
+                                  }
+                                }
+                            );
+                         });
+                        } else {
+                         console.log('User cancelled login or did not fully authorize.');
+                        }
+                    });
+                        
+                    return false;
+                }
                 $(function(){
                         $adminTeams.init();
                         $adminTeams.loadData();
                        // $adminTeams.newdata();
                 });
         </script>
-
+    
 <?php include $rootpath."footer.php";?>
     </body>
 </html>

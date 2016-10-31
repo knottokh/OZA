@@ -38,15 +38,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 right-con">
-                    <div class="right-sponser">
-                        <img src="<?=$scriptroot?>uploads/gallery/popsicle-stick-1631412__180.jpg"></img>
-                    </div>
-                    <div class="right-latestmatch">
-                        
-                    </div>
-                    <div class="right-nextmatch">
-                        
+                <div class="col-md-3 col-sm- 12 right-con">
+                    <div class="row">
+                        <div class="right-sponser col-sm-6 col-md-12">
+                            <img src="<?=$scriptroot?>uploads/gallery/popsicle-stick-1631412__180.jpg"></img>
+                        </div>
+                        <div class="right-latestmatch col-sm-6 col-md-12">
+                            
+                        </div>
+                        <div class="right-nextmatch col-sm-6 col-md-12">
+                            
+                        </div>
                     </div>
                 </div>
             </div>
